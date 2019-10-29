@@ -18,26 +18,41 @@ class Database
 
 class tartarus{
 
-  public function updateIdPrice($id,$price){
+  public function getGoodsInSku(){
     $pdo = Database::DB();
-    $stmt = $pdo->prepare('update
-     t_priceband
-     set price = :price
-     where id = :id');
-    $stmt->bindValue(':price', $price);
-    $stmt->bindValue(':id', $id);
-    $stmt->execute();
-  }
-
-  public function getFiles($qid){
-     $pdo = Database::DB();
-    $stmt =$pdo->prepare('select * 
-      from t_uploads
-      where qid = :stmt');
-    $stmt->bindValue(':stmt',$qid);
+    $stmt = $pdo->query('select * 
+      from goods_in
+      ');
+   
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
+  public function productionSchedule($order){
+     $pdo = Database::DB();
+    $stmt =$pdo->prepare('select *
+      from goods_out
+      where order_id = :stmt
+     ');
+  $stmt->bindValue('stmt', $order);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   public function addFile($qid,$destination){
     $pdo = Database::DB();
