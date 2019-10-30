@@ -1,10 +1,23 @@
-<div ng-controller="goodsIn as gi">
+<div ng-controller="getSchedule as sh">
 
-	<table>
-	<tr ng-repeat="x in gi.getGoodsInSku">
+	<table class="table">
+		<tr>
+		<th>Complete</th>
+		<th>Order id</th>
+		<th>Sku</th>
+		<th>Qty</th>
+		<th>Machine</th>
+		<th>Duration</th>
+		<th>Schedule Date</th>
+	</tr>
+	<tr ng-repeat="x in sh.getSchedule">
+		<td><input type="checkbox" name=""></td>
+		<td>{{x.order_id}}</td>
 		<td>{{x.sku}}</td>
-		<td>{{x.description}}</td>
-		<td>{{x.QTY}}</td>
+		<td>{{x.qty}}</td>
+		<td>{{x.machine}}</td>
+		<td>{{x.duration}}</td>
+		<td>{{x.scheduleDate}}</td>
 	</tr>
 </table>
 </div>
