@@ -36,6 +36,15 @@ myApp.controller('goodsIn',function($scope, $http){
 		});
 	});
 myApp.controller('productionSchedule', function($scope, $http){
+	$scope.machines=[{
+		id: 1,
+		name: 'Machine 1',
+		capacity: 480
+	},
+	{
+	id: 2,
+	name: 'Autobox',
+	capacity: 480}];
 	$scope.search=()=>{
 		value = $scope.searchOrder;
 
@@ -46,6 +55,5 @@ myApp.controller('productionSchedule', function($scope, $http){
 		}).then((response)=>{
 			this.getSchedule = response.data;
 		});
-	}
+}
 });
-
