@@ -12,13 +12,13 @@
 	<th>Order Id</th>
 	<th>Customer Name</th>
 	<th>SKU</th>
-	
+	<th>Qty</th>
 	</tr>
 	<tr ng-repeat="x in ps.getSchedule">
 		<td>{{x.order_id}}</td>
 		<td>{{x.customer}}</td>
 		<td>{{x.sku}}</td>
-		
+		<td>{{x.qty}}</td>
 		<td><button ng-click="showDetails(x)" class="btn btn-info btn-sml">Schedule</td>
 	</tr>
 	</table>

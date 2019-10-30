@@ -1,4 +1,7 @@
 <div ng-controller="getSchedule as sh">
+	<style type="text/css">
+		td{text-align: center}
+	</style>
 
 	<table class="table">
 		<tr>
@@ -7,7 +10,7 @@
 		<th>Sku</th>
 		<th>Qty</th>
 		<th>Machine</th>
-		<th>Duration</th>
+		<th>Duration (minutes)</th>
 		<th>Schedule Date</th>
 	</tr>
 	<tr ng-repeat="x in sh.getSchedule">

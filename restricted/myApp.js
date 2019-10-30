@@ -59,9 +59,39 @@ $scope.schedule =()=>{
 		capacity: 480
 	},
 	{
-	id: 2,
+		id: 2,
+		name: 'Machine 2',
+		capacity: 480
+	},
+	{
+		id: 3,
+		name: 'Machine 3',
+		capacity: 480
+	},
+	{
+		id: 4,
+		name: 'Machine 4',
+		capacity: 480
+	},
+	{
+		id: 5,
+		name: 'Machine 5',
+		capacity: 480
+	},
+	{
+		id: 6,
+		name: 'Machine 6',
+		capacity: 480
+	},
+	{
+	id: 7,
 	name: 'Autobox',
-	capacity: 480}];
+	capacity: 480},
+	{
+		id: 8,
+		name: 'Loadpoint',
+		capacity: 480
+	}];
 
 	$scope.showDetails = function(x){
 		$scope.details = x;
