@@ -18,6 +18,22 @@ class Database
 
 class tartarus{
 
+  public function getMachineData($machine,$date){
+    $pdo = Database::DB();
+    $stmt=$pdo->prepare('select
+    *
+    from
+    prod_schedule
+    where 
+    machine = :machine 
+    and 
+    scheduleDate = :date');
+    $stmt->bindValue(':machine', $machine);
+    $stmt->bindValue('date', $date);
+    $stmt->execute();
+     return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
+
   public function getSchedule(){
     $pdo = Database::DB();
     $stmt = $pdo->query('select * 
@@ -54,5 +70,19 @@ class tartarus{
     $stmt->bindValue(6,$scheduleDate);
     
     $stmt->execute();
+  }
+
+  public function getCapacity($date){
+    $pdo = Database::DB();
+    $stmt=$pdo->prepare('select
+    machine, 480-sum(duration) as minutes, sum((duration)*100)/480 as capacity
+    from
+    prod_schedule
+    where 
+    scheduleDate = :date
+    group by machine');
+    $stmt->bindValue(':date', $date);
+    $stmt->execute();
+     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
 }

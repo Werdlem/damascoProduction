@@ -44,7 +44,8 @@
 	<ul class="nav navbar-nav">
 	<li><a href="/">Home <span class="badge badge-light"></span></a>
   </li>
-	<li><a href="/goodsIn">Goods In</a></li>
+	<li><a href="/production">Production Schedule</a></li>
+  <li><a href="/capacity">Capacity</a></li>
 	
 </ul>
 

@@ -3,8 +3,14 @@ var myApp = angular.module('myApp', ['ngRoute','ngFileUpload'])
 	$routeProvider.when("/", {
 		templateUrl : "/templates/home.php"
 	})
-  .when("/goodsIn", {
-    templateUrl : "/templates/goodsIn.php"
+  .when("/production", {
+    templateUrl : "/templates/production.php"
+  })
+  .when("/capacity", {
+    templateUrl : "/templates/capacity.php"
+  })
+  .when("/viewMachine", {
+    templateUrl : "/templates/viewMachine.php"
   });
 
 
@@ -23,6 +29,38 @@ myApp.filter('dropDigits', function() {
     .map(function (d, i) { return i ? d.substr(0, 2) : d; })
     .join('.');
   };
+});
+
+myApp.controller('machine', function($scope,$http,$location){
+
+	
+	this.search = $location.search();
+	machine = this.search.machine;
+	date = this.search.date;
+	$scope.MachineName = this.search.machine;
+	$scope.date = this.search.date;
+
+	$http({
+		method:'POST',
+		url:'./jsonData/getMachineData.json.php',
+		data:{machine: machine, 
+			date:date}
+	}).then((response)=>{
+		this.getMachineData = response.data;
+	});
+})
+
+myApp.controller('capacity',function($scope,$http, $location){
+		$scope.search =()=>{
+
+			$http({
+		method:'POST',
+		url:'./jsonData/getCapacity.json.php',
+		data: $scope.dateSelect
+	}).then((response)=>{
+		this.getCapacity = response.data;
+	});
+}
 });
 
 

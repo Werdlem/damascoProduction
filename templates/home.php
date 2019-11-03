@@ -1,11 +1,14 @@
 <div ng-controller="productionSchedule as ps">
 
 	
-<h1>Production Schedule </h1>
+<h1>Schedule Order Production</h1>
 
 <h3>Order Search: <input type="" ng-model="searchOrder" ng-change="search()"></h3>
 <p>"NB:for Postpack orders, please use the prefix 'p' followed by the order number and 'd' followed by the order number for damasco"</p>
-
+<!--<button ng-click="showDetails()" class="btn btn-info btn-sml">Schedule</button>-->
+<style type="text/css">
+	.table{width: 50%}
+</style>
 
 <table class="table">
 	<tr>
@@ -33,9 +36,10 @@
                                 <h4 class="modal-title">Schedule Production</h4>
                             </div>
                             <div class="modal-body">
-                            	<p>Order Id: {{details.order_id}}</p>
-                                <p>SKU: {{details.sku}}</p>
-                                <p>Qty: {{details.qty}}</p>
+                            	<input type="" ng-model="details.sku" hidden="">
+                            	<p>Order Id: {{details.order_id}}<input type="" ng-model="details.order_id" ng-hide="details.sku"></p>
+                            	<p>SKU: {{details.sku}}<input type="" ng-model="details.sku" ng-hide="details.sku"></p>
+                                <p>Qty: {{details.qty}}<input type="" ng-model="details.qty" ng-hide="details.sku"></p>
                                 <p>Machine: <select ng-model="machine" ng-options="x.name for x in machines" ></select></p>
                                 <p>Duration: <input type="number" ng-model="duration"></p>
                                 <p>Schedule Date: <input type="date" ng-model="scheduleDate"></p>
